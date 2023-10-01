@@ -1,0 +1,56 @@
+nav {
+  height: 100%;
+  width: fit-content;
+  background-color: var(--clr-accent-a);
+}
+
+.top-row {
+  background-color: rgba(0,0,0,0.4);
+  font-size: 1.5em;
+  text-align: center;
+  padding: 20px;
+  color: var(--clr-white);
+  font-family: var(--font-h);
+}
+
+.nav-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+  gap: 10px;
+  width: 100%;
+}
+
+.nav-item {
+  font-size: 0.9rem;
+  width: 100%;
+  padding: 0.2em;
+  font-size: 1.3em;
+}
+
+.nav-item svg {
+  height: 1em;
+  width: 1em;
+}
+
+.nav-item ::deep a {
+    color: var(--clr-white);
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 20px;
+}
+
+.nav-item ::deep a.active {
+    color: var(--clr-accent-c);
+}
+
+.nav-item ::deep a:hover {
+    background-color: rgba(255,255,255,0.1);
+    color: var(--clr-accent-c);
+}

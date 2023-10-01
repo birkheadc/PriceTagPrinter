@@ -1,0 +1,22 @@
+@font-face {
+  font-family: 'Roboto';
+  src: url(../fonts/Roboto/Roboto-Regular.ttf);
+}
+
+@font-face {
+  font-family: 'Russo One';
+  src: url(../fonts/Russo_One/RussoOne-Regular.ttf);
+}
+
+:root {
+  --font-pri: 'Roboto', sans-serif;
+  --font-h: 'Russo One', sans-serif;
+}
+
+html {
+  font-family: var(--font-pri);
+}
+
+h1 {
+  font-family: var(--font-h);
+}

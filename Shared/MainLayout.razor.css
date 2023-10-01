@@ -1,0 +1,16 @@
+::deep h1 {
+  font-size: 3rem;
+}
+
+::deep button {
+  border: var(--border-pri);
+  padding: 10px;
+}
+
+::deep button:hover, ::deep button:focus {
+  box-shadow: var(--box-shadow-pri);
+}
+
+::deep button:active {
+  color: var(--clr-accent-c);
+}
