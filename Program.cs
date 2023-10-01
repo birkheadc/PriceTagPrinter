@@ -1,13 +1,20 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
-using PriceTagPrinter.Data;
+using Microsoft.EntityFrameworkCore;
+using PriceTagPrinter.Contexts;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+string goodsConnectionString = builder.Configuration.GetConnectionString("Goods");
+string priceTagConnectionString = builder.Configuration.GetConnectionString("PriceTag");
+
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
-builder.Services.AddSingleton<WeatherForecastService>();
+
+builder.Services.AddDbContextFactory<GoodsContext>(o => o.UseSqlite(goodsConnectionString));
+builder.Services.AddDbContextFactory<PriceTagContext>(o => o.UseSqlite(priceTagConnectionString));
 
 var app = builder.Build();
 

@@ -1,13 +1,10 @@
+@namespace PriceTagPrinter.Pages
 @page "/data"
+@using Microsoft.EntityFrameworkCore
+@using PriceTagPrinter.Contexts
+@inject IDbContextFactory<GoodsContext> GoodsContextFactory
+@inject IDbContextFactory<PriceTagContext> PriceTagContextFactory
 
 <h1>Manage Data</h1>
 
 <button @onclick="Test">Test</button>
-
-@code
-{
-  private void Test()
-  {
-    
-  }
-}
