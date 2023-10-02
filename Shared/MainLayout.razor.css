@@ -1,5 +1,14 @@
+::deep div.sidebar {
+  
+}
+
 ::deep h1 {
   font-size: 3rem;
+  width: 100%;
+}
+
+::deep h2 {
+  font-size: 2rem;
 }
 
 ::deep button {
@@ -13,4 +22,12 @@
 
 ::deep button:active {
   color: var(--clr-accent-c);
+}
+
+::deep .page-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }

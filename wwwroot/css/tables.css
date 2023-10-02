@@ -1,0 +1,23 @@
+div.table-wrapper {
+  width: 100%;
+  padding: 20px;
+  border: var(--border-pri);
+}
+
+div.table-wrapper>table {
+  border: var(--border-pri);
+  border-collapse: collapse;
+}
+
+div.table-wrapper thead {
+  background-color: var(--clr-black);
+  color: var(--clr-white);
+}
+
+div.table-wrapper th, div.table-wrapper td {
+  padding: 5px 20px;
+}
+
+div.table-wrapper tbody tr:nth-of-type(odd) {
+  background-color: rgba(0, 0, 0, 0.1);
+}

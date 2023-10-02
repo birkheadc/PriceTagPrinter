@@ -2,11 +2,59 @@
 @page "/data"
 @using Microsoft.EntityFrameworkCore
 @using PriceTagPrinter.Contexts
+@using PriceTagPrinter.Models
 @inject IDbContextFactory<GoodsContext> GoodsContextFactory
 @inject IDbContextFactory<PriceTagContext> PriceTagContextFactory
 
-<h1>Manage Data</h1>
+<div class="page-body">
+  <h1>Manage Data</h1>
+  <div class="table-wrapper">
+    <h2>Price Tags</h2>
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th class="right-align" scope="col">Price</th>
+          <th scope="col">Created</th>
+          <th scope="col">Queued for Printing?</th>
+          <th scope="col">Barcode</th>
+        </tr>
+      </thead>
+      <tbody>
+        @if (PriceTags is not null) @foreach (PriceTag priceTag in PriceTags)
+        {
+          <tr>
+            <th scope="row">@priceTag.GoodsName</th>
+            <td class="right-align">@priceTag.GoodsPrice</td>
+            <td class="center-align">@priceTag.CreatedAt.ToString()</td>
+            <td>@(priceTag.NeedsPrinting ? "Yes" : "No")</td>
+            <td>@priceTag.GoodsCode</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+  <div class="table-wrapper">
+    <h2>Goods</h2>
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th class="right-align" scope="col">Price</th>
+          <th scope="col">Barcode</th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach (Goods goods in Goods)
+        {
+          <tr>
+            <th scope="row">@goods.GoodsName</th>
+            <td class="right-align">@goods.GoodsCost</td>
+            <td>@goods.GoodsCode</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
 
-<button @onclick="Test">Test</button>
-<button @onclick="ListPriceTags">List Price Tags</button>
-<button @onclick="CreateNewPriceTag">Create New Price Tag</button>

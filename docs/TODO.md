@@ -6,3 +6,5 @@
     - At-will
     - From within this app
     - Without installing anything on the register
+
+- Need to keep track of when last pull from real database happened.
