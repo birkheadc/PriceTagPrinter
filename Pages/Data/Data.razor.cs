@@ -42,7 +42,13 @@ public partial class Data
       return;
     }
 
+    List<PriceTag> priceTags = await priceTagContext.PriceTags.Where(_ => true).ToListAsync();
 
+    Console.WriteLine("Found thise price tags...");
+    foreach (PriceTag priceTag in priceTags)
+    {
+      Console.WriteLine($"Code ({priceTag.GoodsCode}) created at {priceTag.CreatedAt}");
+    }
   }
 
   public async Task CreateNewPriceTag()
@@ -51,7 +57,7 @@ public partial class Data
 
     PriceTag priceTag = new()
     {
-      GoodsCode = "000",
+      GoodsCode = Guid.NewGuid().ToString(),
       GoodsName = "Panda",
       GoodsPrice = 100,
       CreatedAt = DateTime.Now
@@ -65,6 +71,7 @@ public partial class Data
       return;
     }
 
-    await priceTagContext.AddAsync(priceTag);
+    priceTagContext.PriceTags.Add(priceTag);
+    await priceTagContext.SaveChangesAsync();
   }
 }
