@@ -1,0 +1,39 @@
+::deep form.add-to-queue-wrapper {
+  padding: 20px 0;
+}
+
+::deep form.add-to-queue-wrapper>div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  width: fit-content;
+}
+
+::deep div.queue-page-bottom-buttons-wrapper {
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+::deep button.table-button {
+  border: none;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+::deep button.table-button:hover, ::deep button.table-button:focus {
+  box-shadow: none;
+  color: var(--clr-accent-b);
+}
+
+::deep button.table-button:active {
+  color: var(--clr-accent-c);
+}

@@ -15,7 +15,7 @@ div.table-wrapper thead {
 }
 
 div.table-wrapper th, div.table-wrapper td {
-  padding: 5px 20px;
+  padding: 5px 10px;
 }
 
 div.table-wrapper tbody tr:nth-of-type(odd) {

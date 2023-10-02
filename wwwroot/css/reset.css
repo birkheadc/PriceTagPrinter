@@ -98,3 +98,7 @@ meter {
 :where(dialog:modal) {
   all: revert;
 }
+
+label {
+  cursor: default;
+}

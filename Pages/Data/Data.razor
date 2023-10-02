@@ -1,5 +1,7 @@
 @namespace PriceTagPrinter.Pages
+
 @page "/data"
+
 @using Microsoft.EntityFrameworkCore
 @using PriceTagPrinter.Contexts
 @using PriceTagPrinter.Models
@@ -21,12 +23,12 @@
         </tr>
       </thead>
       <tbody>
-        @if (PriceTags is not null) @foreach (PriceTag priceTag in PriceTags)
+        @foreach (PriceTag priceTag in PriceTags)
         {
           <tr>
             <th scope="row">@priceTag.GoodsName</th>
             <td class="right-align">@priceTag.GoodsPrice</td>
-            <td class="center-align">@priceTag.CreatedAt.ToString()</td>
+            <td>@priceTag.CreatedAt.ToString()</td>
             <td>@(priceTag.NeedsPrinting ? "Yes" : "No")</td>
             <td>@priceTag.GoodsCode</td>
           </tr>

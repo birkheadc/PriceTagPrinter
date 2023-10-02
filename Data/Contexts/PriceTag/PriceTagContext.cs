@@ -7,7 +7,7 @@ public class PriceTagContext : DbContext
 {
   private readonly IConfiguration configuration;
 
-  public DbSet<PriceTag>? PriceTags { get; set; }
+  public DbSet<PriceTag> PriceTags => Set<PriceTag>();
 
   public PriceTagContext(IConfiguration configuration)
   {

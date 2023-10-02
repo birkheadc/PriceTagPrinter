@@ -7,11 +7,11 @@ public class GoodsContext : DbContext
 {
   private readonly IConfiguration configuration;
 
-  public DbSet<Goods>? Goods { get; set; }
+  public DbSet<Goods> Goods => Set<Goods>();
 
   public GoodsContext(IConfiguration configuration)
   {
-    this.configuration = configuration;
+    this.configuration = configuration; 
   }
 
   protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

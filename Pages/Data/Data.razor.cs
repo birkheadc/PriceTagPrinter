@@ -19,17 +19,9 @@ public partial class Data
   public async Task Initialize()
   {
     goodsContext ??= await GoodsContextFactory.CreateDbContextAsync();
-    if (goodsContext.Goods is null)
-    {
-      throw new NullReferenceException("GoodsContext.Goods is null.");
-    }
     Goods = await goodsContext.Goods.ToListAsync();
 
     priceTagContext ??= await PriceTagContextFactory.CreateDbContextAsync();
-    if (priceTagContext.PriceTags is null)
-    {
-      throw new NullReferenceException("PriceTagContext.PriceTags is null.");
-    }
     PriceTags = await priceTagContext.PriceTags.ToListAsync();
   }
   // public async Task Test()
