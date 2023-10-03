@@ -1,5 +1,6 @@
 :root {
   --clr-black: #383D3B;
+  --clr-grey: #ccc;
   --clr-white: #F7F7FF;
   --clr-accent-a: #B20D30;
   --clr-accent-b: #0075C4;
@@ -7,6 +8,7 @@
 
   --border-pri: solid var(--clr-black) 3px;
   --border-sec: solid var(--clr-black) 1px;
+  --border-thick: solid var(--clr-black) 6px;
 
   --box-shadow-pri: 5px 5px 10px var(--clr-black);
 }

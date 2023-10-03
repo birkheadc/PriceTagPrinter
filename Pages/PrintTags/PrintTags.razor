@@ -1,0 +1,28 @@
+@page "/print-tags"
+@layout NoMenuLayout
+
+@using Microsoft.EntityFrameworkCore
+@using PriceTagPrinter.Contexts
+@using PriceTagPrinter.Models
+
+@namespace PriceTagPrinter.Pages
+
+@inject IDbContextFactory<PriceTagContext> PriceTagContextFactory
+
+<div class="print-tags-wrapper">
+  @foreach (List<PriceTag> page in PriceTagPagesToPrint)
+  {
+    <div class="print-tags-page-wrapper">
+      <div class="print-tags-page">
+        @foreach (PriceTag tag in page)
+        {
+          <div class="print-tags-tag">
+            <span class="print-tags-tag-title">@tag.GoodsName</span>
+            <span class="print-tags-tag-price">@($"{tag.GoodsPrice:n0}")원</span>
+            <span class="print-tags-tag-code">@tag.GoodsCode</span>
+          </div>
+        }
+      </div>
+    </div>
+  }
+</div>

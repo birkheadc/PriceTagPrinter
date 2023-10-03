@@ -1,0 +1,55 @@
+::deep div.print-tags-page-wrapper {
+  width: 29.7cm;
+  height: 21cm;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5cm;
+  margin-bottom: -0.5cm;
+}
+
+::deep div.print-tags-page {
+  width: 28.7cm;
+  height: 20cm;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+}
+
+::deep div.print-tags-tag {
+  border: var(--border-thick);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+::deep span.print-tags-tag-title {
+  width: 100%;
+  background-color: var(--clr-grey);
+  color: var(--clr-black);
+  padding: 5px 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 1.2rem;
+  font-family: var(--font-korean-pri);
+}
+
+::deep span.print-tags-tag-price {
+  width: 100%;
+  background-color: var(--clr-white);
+  color: var(--clr-black);
+  font-size: 2.8rem;
+  padding: 5px 10px;
+  text-align: right;
+  font-family: var(--font-korean-price);
+}
+
+::deep span.print-tags-tag-code {
+  width: 100%;
+  background-color: var(--clr-white);
+  color: var(--clr-grey);
+  text-align: center;
+  padding: 5px;
+  font-size: 1rem;
+}

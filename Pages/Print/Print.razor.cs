@@ -1,3 +1,4 @@
+using System.Text.Json;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.JSInterop;
 using PriceTagPrinter.Contexts;
@@ -74,7 +75,7 @@ public partial class Print
 
   public async Task HandlePrintAll()
   {
-
+    await JsRuntime.InvokeVoidAsync("open", $"print-tags", "_blank");
   }
 
   public async Task HandleClearQueue()

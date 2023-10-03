@@ -1,5 +1,5 @@
-::deep div.sidebar {
-  
+::deep main {
+  padding: 40px 80px;
 }
 
 ::deep h1 {
