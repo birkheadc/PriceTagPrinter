@@ -1,0 +1,15 @@
+@using PriceTagPrinter.Config
+
+@namespace PriceTagPrinter.Pages
+@inject BackendUrlConfig urlConfig
+
+@page "/upload"
+
+<div class="page-body">
+  <h1>Upload Database</h1>
+  <form action=@(urlConfig.Url + "/upload") method="POST" enctype="multipart/form-data">
+    <label for="UploadedFile">Select File</label>
+    <input id="UploadedFile" name="UploadedFile" type="file">
+    <button type="submit">Submit</button>
+  </form>
+</div>
