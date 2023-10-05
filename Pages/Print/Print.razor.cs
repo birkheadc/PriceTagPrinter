@@ -7,23 +7,19 @@ using PriceTagPrinter.Models;
 namespace PriceTagPrinter.Pages;
 public partial class Print
 {
-  private GoodsContext? goodsContext;
-  private PriceTagContext? priceTagContext;
   public List<PriceTag> PriceTagsToPrint = new();
   public string GoodsCodeToAddToQueue { get; set; } = "";
 
   protected override async Task OnInitializedAsync()
   {
-    goodsContext ??= await GoodsContextFactory.CreateDbContextAsync();
-
-    priceTagContext ??= await PriceTagContextFactory.CreateDbContextAsync();
+    using PriceTagContext priceTagContext = PriceTagContextFactory.CreateDbContext();
     PriceTagsToPrint = await priceTagContext.PriceTags.Where(p => p.NeedsPrinting).ToListAsync();
   }
 
   public async Task HandleAddToQueue()
   {
-    if (goodsContext is null || priceTagContext is null) return;
-
+    using GoodsContext goodsContext = GoodsContextFactory.CreateDbContext();
+    using PriceTagContext priceTagContext = PriceTagContextFactory.CreateDbContext();
     Goods? goods = await goodsContext.FindAsync<Goods>(GoodsCodeToAddToQueue);
     if (goods is null)
     {
@@ -52,7 +48,7 @@ public partial class Print
 
     priceTag = PriceTagGoodsConverter.ToPriceTag(goods);
     PriceTagsToPrint.Add(priceTag);
-    
+
     await priceTagContext.PriceTags.AddAsync(priceTag);
     await priceTagContext.SaveChangesAsync();
     GoodsCodeToAddToQueue = "";
@@ -60,8 +56,7 @@ public partial class Print
 
   public async Task HandleRemovePriceTag(PriceTag priceTag)
   {
-    if (priceTagContext is null) return;
-
+    using PriceTagContext priceTagContext = PriceTagContextFactory.CreateDbContext();
     PriceTagsToPrint.Remove(priceTag);
     priceTag.NeedsPrinting = false;
     priceTagContext.PriceTags.Update(priceTag);
@@ -80,9 +75,18 @@ public partial class Print
 
   public async Task HandleClearQueue()
   {
+    using PriceTagContext priceTagContext = PriceTagContextFactory.CreateDbContext();
     while (PriceTagsToPrint.Count > 0)
     {
-      await HandleRemovePriceTag(PriceTagsToPrint[0]);
+      RemovePriceTagFromContext(PriceTagsToPrint[0], priceTagContext);
     }
+    await priceTagContext.SaveChangesAsync();
+  }
+
+  private void RemovePriceTagFromContext(PriceTag priceTag, PriceTagContext context)
+  {
+    PriceTagsToPrint.Remove(priceTag);
+    priceTag.NeedsPrinting = false;
+    context.PriceTags.Update(priceTag);
   }
 }

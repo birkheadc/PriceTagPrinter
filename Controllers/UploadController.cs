@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using PriceTagPrinter.Config;
+using PriceTagPrinter.Services;
 
 namespace PriceTagPrinter.Controllers;
 
@@ -8,18 +9,19 @@ namespace PriceTagPrinter.Controllers;
 public class UploadController : ControllerBase
 {
   private readonly BackendUrlConfig urlConfig;
+  private readonly IUploadService uploadService;
 
-  public UploadController(BackendUrlConfig urlConfig)
+  public UploadController(BackendUrlConfig urlConfig, IUploadService uploadService)
   {
     this.urlConfig = urlConfig;
+    this.uploadService = uploadService;
   }
 
   [HttpPost]
   public async Task<IActionResult> SubmitForm()
   {
     try
-    {
-      // Todo: Do all of this somewhere else
+    {      
       IFormFileCollection files = HttpContext.Request.Form.Files;
       if (files.Count < 1)
       {
@@ -31,14 +33,8 @@ public class UploadController : ControllerBase
         Console.WriteLine("Found too many files!");
         return Redirect(urlConfig.Url);
       }
-      
-      string path = "Data/Databases/Goods/goods.db";
-      Console.WriteLine($"Copying file to path: {path}");
-      using (Stream stream = new FileStream(path, FileMode.Create))
-      {
-        await files[0].CopyToAsync(stream);
-      }
-      Console.WriteLine("Finished copying file.");
+
+      await uploadService.OverwriteDatabase(files[0]);
     }
     catch (Exception ex)
     {

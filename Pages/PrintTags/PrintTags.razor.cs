@@ -8,11 +8,10 @@ namespace PriceTagPrinter.Pages;
 
 public partial class PrintTags
 {
-  private PriceTagContext? priceTagContext;
   public List<List<PriceTag>> PriceTagPagesToPrint = new();
   protected override async Task OnInitializedAsync()
   {
-    priceTagContext ??= await PriceTagContextFactory.CreateDbContextAsync();
+    using PriceTagContext priceTagContext = PriceTagContextFactory.CreateDbContext();
     List<PriceTag> priceTags = await priceTagContext.PriceTags.Where(p => p.NeedsPrinting).ToListAsync();
 
     List<List<PriceTag>> priceTagPagesToPrint = BreakPriceTagsIntoBlocksOfN(priceTags, 25);
