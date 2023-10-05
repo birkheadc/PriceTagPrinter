@@ -15,3 +15,5 @@
   - Endpoint must be available to CURL / automatic uploading
   - Get manual uploading working first
   - Finally, figure out how to schedule the register to do the upload itself automatically, maybe daily
+
+- Track down why the database is not copying sometimes (already in use) -- I thought I disposed of my contexts? Or is that not enough...
