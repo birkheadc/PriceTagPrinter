@@ -48,7 +48,7 @@ public partial class Print
       GoodsCodeToAddToQueue = "";
       return;
     }
-
+    PlaySuccessSound();
     priceTag = PriceTagGoodsConverter.ToPriceTag(goods);
     PriceTagsToPrint.Add(priceTag);
 
