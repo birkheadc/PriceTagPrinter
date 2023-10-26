@@ -1,5 +1,6 @@
 
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
 using PriceTagPrinter.Contexts;
 using PriceTagPrinter.Models;
 
@@ -7,19 +8,20 @@ namespace PriceTagPrinter.Services;
 
 public class UploadService : IUploadService
 {
-  private readonly GoodsContext goodsContext;
-  private readonly PriceTagContext priceTagContext;
+  private readonly IDbContextFactory<GoodsContext> goodsContextFactory;
+  private readonly IDbContextFactory<PriceTagContext> priceTagContextFactory;
+  private const string DATABASE_PATH = "Data/Databases/Goods/goods.db";
 
   public UploadService(IDbContextFactory<GoodsContext> goodsContextFactory, IDbContextFactory<PriceTagContext> priceTagContextFactory)
   {
-    goodsContext = goodsContextFactory.CreateDbContext();
-    priceTagContext = priceTagContextFactory.CreateDbContext();
+    this.goodsContextFactory = goodsContextFactory;
+    this.priceTagContextFactory = priceTagContextFactory;
   }
+
   public async Task OverwriteDatabase(IFormFile newDatabase)
   {
-    string path = "Data/Databases/Goods/goods.db";
-    Console.WriteLine($"Copying file to path: {path}");
-    using (Stream stream = new FileStream(path, FileMode.Create))
+    Console.WriteLine($"Copying file to path: {DATABASE_PATH}");
+    using (Stream stream = new FileStream(DATABASE_PATH, FileMode.Create))
     {
       await newDatabase.CopyToAsync(stream);
     }
@@ -30,6 +32,9 @@ public class UploadService : IUploadService
 
   private async Task UpdatePriceTags()
   {
+    using GoodsContext goodsContext = goodsContextFactory.CreateDbContext();
+    using PriceTagContext priceTagContext = priceTagContextFactory.CreateDbContext();
+
     List<PriceTag> priceTags = priceTagContext.PriceTags.ToList();
 
     foreach (PriceTag priceTag in priceTags)

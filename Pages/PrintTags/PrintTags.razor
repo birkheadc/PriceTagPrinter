@@ -18,8 +18,10 @@
         {
           <div class="print-tags-tag">
             <span class="print-tags-tag-title">@tag.GoodsName</span>
-            <span class="print-tags-tag-price">@($"{tag.GoodsPrice:n0}")원</span>
-            <span class="print-tags-tag-code">@tag.GoodsCode</span>
+            <span class="print-tags-tag-price">@($"{tag.GoodsPrice:n0}")<span class="print-tags-tag-price-won-symbol">원</span></span>
+            <div class="print-tags-tag-code-wrapper">
+              <span class="print-tags-tag-code">@tag.GoodsCode</span>
+            </div>
           </div>
         }
       </div>

@@ -24,6 +24,7 @@ public partial class Print
     if (goods is null)
     {
       GoodsCodeToAddToQueue = "";
+      PlayErrorSound();
       await JsRuntime.InvokeVoidAsync("alert", "That goods does not exist. Please add it to the database, then refresh.");
       return;
     }
@@ -35,9 +36,11 @@ public partial class Print
       {
         // Todo: Add print-multiple functionality
         GoodsCodeToAddToQueue = "";
+        PlayErrorSound();
         await JsRuntime.InvokeVoidAsync("alert", "That price tag is already scheduled to print!");
         return;
       }
+      PlaySuccessSound();
       PriceTagsToPrint.Add(priceTag);
       priceTag.NeedsPrinting = true;
       priceTag.CreatedAt = DateTime.Now;
@@ -63,11 +66,6 @@ public partial class Print
     await priceTagContext.SaveChangesAsync();
   }
 
-  public async Task HandleUpdateDatabase()
-  {
-    
-  }
-
   public async Task HandlePrintAll()
   {
     await JsRuntime.InvokeVoidAsync("open", $"print-tags", "_blank");
@@ -88,5 +86,15 @@ public partial class Print
     PriceTagsToPrint.Remove(priceTag);
     priceTag.NeedsPrinting = false;
     context.PriceTags.Update(priceTag);
+  }
+
+  private async void PlaySuccessSound()
+  {
+    await JsRuntime.InvokeVoidAsync("PlayAudio", "blip1");
+  }
+
+  private async void PlayErrorSound()
+  {
+    await JsRuntime.InvokeVoidAsync("PlayAudio", "blip2");
   }
 }

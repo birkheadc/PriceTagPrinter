@@ -18,6 +18,16 @@
   src: url(../fonts/Do_Hyeon/DoHyeon-Regular.ttf);
 }
 
+@font-face {
+  font-family: 'Libre Barcode 128 Text';
+  src: url(../fonts/Libre_Barcode_128_Text/LibreBarcode128Text-Regular.ttf);
+}
+
+@font-face {
+  font-family: 'Libre Barcode EAN13 Text';
+  src: url(../fonts/Libre_Barcode_EAN13_Text/LibreBarcodeEAN13Text-Regular.ttf);
+}
+
 
 
 :root {
@@ -25,6 +35,7 @@
   --font-h: 'Russo One', sans-serif;
   --font-korean-pri: 'Noto Serif KR', serif;
   --font-korean-price: 'DoHyeon', sans-serif;
+  --font-barcode: 'Libre Barcode EAN13 Text', sans-serif;
 }
 
 html {

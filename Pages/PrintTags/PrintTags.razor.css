@@ -5,7 +5,7 @@
   justify-content: center;
   align-items: center;
   padding: 0.5cm;
-  margin-bottom: -0.5cm;
+  margin-bottom: 0.5cm;
 }
 
 ::deep div.print-tags-page {
@@ -14,42 +14,67 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
   grid-template-rows: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+  border: var(--border-thick);
+  border-color: black;
 }
 
 ::deep div.print-tags-tag {
   border: var(--border-thick);
+  border-color: black;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  overflow: hidden;
+  /* padding-bottom: 5px; */
 }
 
 ::deep span.print-tags-tag-title {
-  width: 100%;
   background-color: var(--clr-grey);
-  color: var(--clr-black);
+  color: black;
   padding: 5px 10px;
+  font-size: 1rem;
+  font-family: var(--font-korean-pri);
+  
   white-space: nowrap;
   overflow: hidden;
+  width: 100%;
   text-overflow: ellipsis;
-  font-size: 1.2rem;
-  font-family: var(--font-korean-pri);
 }
 
 ::deep span.print-tags-tag-price {
   width: 100%;
-  background-color: var(--clr-white);
-  color: var(--clr-black);
+  background-color: white;
+  color: black;
   font-size: 2.8rem;
   padding: 5px 10px;
   text-align: right;
   font-family: var(--font-korean-price);
+  overflow: hidden;
+}
+
+::deep span.print-tags-tag-price-won-symbol {
+  font-size: 1.8rem;
+
+}
+
+::deep div.print-tags-tag-code-wrapper {
+  width: 100%;
+  background-color: white;
+  padding: 5px 10px;
+
+  overflow: hidden;
+  /* border: solid 1px red; */
+
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: end;
 }
 
 ::deep span.print-tags-tag-code {
-  width: 100%;
-  background-color: var(--clr-white);
-  color: var(--clr-grey);
+  font-family: var(--font-barcode);
+  color: black;
   text-align: center;
-  padding: 5px;
-  font-size: 1rem;
+  font-size: 6rem;
 }

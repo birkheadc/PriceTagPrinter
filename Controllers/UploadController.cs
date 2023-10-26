@@ -5,7 +5,7 @@ using PriceTagPrinter.Services;
 namespace PriceTagPrinter.Controllers;
 
 [ApiController]
-[Route("upload")]
+[Route("api/upload")]
 public class UploadController : ControllerBase
 {
   private readonly BackendUrlConfig urlConfig;
@@ -15,6 +15,13 @@ public class UploadController : ControllerBase
   {
     this.urlConfig = urlConfig;
     this.uploadService = uploadService;
+  }
+
+  [HttpGet]
+  [Route("ping")]
+  public IActionResult Ping()
+  {
+    return Ok("Ping successful.");
   }
 
   [HttpPost]
@@ -43,7 +50,7 @@ public class UploadController : ControllerBase
     }
     // The front end is too stupid to understand anything so just refresh the page regardless.
     // Todo: Redirect hte user to a "upload success" or "upload failed" page.
-        return Redirect(urlConfig.Url);
+    return Redirect(urlConfig.Url);
   }
 }
 
