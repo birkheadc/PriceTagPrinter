@@ -1,4 +1,5 @@
 using System.Text.Json;
+using Microsoft.AspNetCore.Components;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.JSInterop;
 using PriceTagPrinter.Contexts;
@@ -55,6 +56,23 @@ public partial class Print
     await priceTagContext.PriceTags.AddAsync(priceTag);
     await priceTagContext.SaveChangesAsync();
     GoodsCodeToAddToQueue = "";
+  }
+
+  public async Task HandleChangePriceTagSize(string goodsCode, ChangeEventArgs changeEventArgs)
+  {
+    Console.WriteLine($"Change Price Tag Size: Code={goodsCode} Size={changeEventArgs.Value}");
+
+    PriceTag? priceTag = PriceTagsToPrint.Where(p => p.GoodsCode == goodsCode).FirstOrDefault();
+    if (priceTag is null) return;
+
+    bool wasSuccess = Enum.TryParse(changeEventArgs.Value?.ToString(), out PriceTagSize size);
+    if (wasSuccess == false) return;
+
+    priceTag.Size = size;
+    using PriceTagContext priceTagContext = PriceTagContextFactory.CreateDbContext();
+    priceTagContext.Update(priceTag);
+    await priceTagContext.SaveChangesAsync();
+
   }
 
   public async Task HandleRemovePriceTag(PriceTag priceTag)

@@ -10,6 +10,7 @@ public static class PriceTagGoodsConverter
       GoodsName = goods.GoodsName,
       GoodsPrice = goods.GoodsCost,
       CreatedAt = DateTime.Now,
+      Size = PriceTagSize.NORMAL,
       NeedsPrinting = true
     };
   }

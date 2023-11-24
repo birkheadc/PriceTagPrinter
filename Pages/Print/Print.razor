@@ -32,6 +32,7 @@
           <th class="right-align" scope="col">Price</th>
           <th scope="col">Created</th>
           <th scope="col">Barcode</th>
+          <th scope="col">Size</th>
           <th scope="col">Remove</th>
         </tr>
       </thead>
@@ -43,6 +44,14 @@
             <td class="right-align">@priceTag.GoodsPrice</td>
             <td>@priceTag.CreatedAt.ToString()</td>
             <td>@priceTag.GoodsCode</td>
+            <td>
+              <select class="price-tag-size-select" value="@priceTag.Size" @onchange="(ChangeEventArgs args) => HandleChangePriceTagSize(priceTag.GoodsCode, args)">
+                @foreach (var size in Enum.GetValues(typeof(PriceTagSize)))
+                {
+                  <option value="@size">@size</option>
+                }
+              </select>
+            </td>
             <td>
               <button class="table-button" @onclick="() => HandleRemovePriceTag(priceTag)" type="button">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">

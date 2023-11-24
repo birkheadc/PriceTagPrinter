@@ -37,3 +37,16 @@
 ::deep button.table-button:active {
   color: var(--clr-accent-c);
 }
+
+::deep select.price-tag-size-select {
+  border: 1px solid var(--clr-black);
+  padding: 5px;
+  cursor: pointer;
+  color: var(--clr-black);
+  background-color: var(--clr-white);
+}
+
+::deep select.price-tag-size-select:hover {
+  color: var(--clr-white);
+  background-color: var(--clr-black);
+}

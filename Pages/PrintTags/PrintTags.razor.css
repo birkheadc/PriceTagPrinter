@@ -28,6 +28,33 @@
   /* padding-bottom: 5px; */
 }
 
+::deep div.print-tags-tag-size-SHORT {
+  height: 2.8cm;
+}
+
+::deep div.print-tags-tag-size-SHORT span.print-tags-tag-title {
+  font-size: 0.8rem;
+  padding: 3px 5px;
+}
+
+::deep div.print-tags-tag-size-SHORT span.print-tags-tag-price {
+  font-size: 2rem;
+  padding: 3px 5px;
+}
+
+::deep div.print-tags-tag-size-SHORT span.print-tags-tag-price-won-symbol {
+  font-size: 1.3rem;
+}
+
+::deep div.print-tags-tag-size-SHORT div.print-tags-tag-code-wrapper {
+  font-size:0.6rem;
+  height: 30px;
+}
+
+::deep div.print-tags-tag-size-NORMAL {
+  /* height: 200px; */
+}
+
 ::deep span.print-tags-tag-title {
   background-color: var(--clr-grey);
   color: black;

@@ -16,7 +16,7 @@
       <div class="print-tags-page">
         @foreach (PriceTag tag in page)
         {
-          <div class="print-tags-tag">
+          <div class="print-tags-tag print-tags-tag-size-@tag.Size">
             <span class="print-tags-tag-title">@tag.GoodsName</span>
             <span class="print-tags-tag-price">@($"{tag.GoodsPrice:n0}")<span class="print-tags-tag-price-won-symbol">원</span></span>
             <div class="print-tags-tag-code-wrapper">
