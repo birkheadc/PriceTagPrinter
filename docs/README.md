@@ -15,4 +15,4 @@ I don't deploy anything! I just run it in the development server on my local int
 `ASPNETCORE_BACKENDURL=http://my.local.ip.address:port dotnet run`
 
 ## Repo-Parser
-This repository is parse-able by my custom repo-parser. The contents of the `repo-parser` directory are meant to be consumed by an API using this package.
+This repository is parse-able by my custom repo-parser. The contents of the `__repo-parser__` directory are meant to be consumed by an API using this package.
