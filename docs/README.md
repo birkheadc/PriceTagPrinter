@@ -13,3 +13,6 @@ The user can view the queue at any time, and print from there.
 I don't deploy anything! I just run it in the development server on my local internet! This feels dumb but works well enough for now. One environment variable needs to be set: `ASPNETCORE_BACKENDURL`. I'm sure there's a way to get this variable without setting it explicitly on startup. But at this point I'm tired of dealing with my register, which *doesn't have javascript enabled* and guessing whether something will work on it or not. So I just launch the server like so:
 
 `ASPNETCORE_BACKENDURL=http://my.local.ip.address:port dotnet run`
+
+## Repo-Parser
+This repository is parse-able by my custom repo-parser. The contents of the `repo-parser` directory are meant to be consumed by an API using this package.
