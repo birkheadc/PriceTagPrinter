@@ -17,5 +17,5 @@ I don't deploy anything! I just run it in the development server on my local int
 ## Repo-Parser
 This repository is parse-able by my custom repo-parser. The contents of the `repo-parser-target` directory are meant to be consumed by an API using this package.
 ### GithubRepoParser
-- source code: `https://github.com/birkheadc/github-repo-parser`
+- source code: [https://github.com/birkheadc/github-repo-parser]
 - npm package: (not yet published)
