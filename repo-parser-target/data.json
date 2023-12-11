@@ -16,11 +16,11 @@
     "longDescriptions": [
       {
         "language": "en",
-        "content": "Receives copies of the store's database via an upload form, then stores the copy.\nReads from the database when scanning a product to automatically fill name, price, and barcode fields on the price tag. Gives audible feedback (success / error beeps) after each scan so the user doesn't have to look at the screen. After scanning all desired products, instantly creates a page or pages to be printed.\nWhen uploading the database, automatically checks for updated products, then queues them for printing if the name or price has changed since last printed.\nCan accommodate and keep track of size of barcode on a per-product basis in case of different size displays."
+        "content": "Receives copies of the store's database via an upload form, then stores the copy.\n\nReads from the database when scanning a product to automatically fill name, price, and barcode fields on the price tag. Gives audible feedback (success / error beeps) after each scan so the user doesn't have to look at the screen. After scanning all desired products, instantly creates a page or pages to be printed.\n\nWhen uploading the database, automatically checks for updated products, then queues them for printing if the name or price has changed since last printed.\n\nCan accommodate and keep track of size of barcode on a per-product basis in case of different size displays."
       },
       {
         "language": "jp",
-        "content": "POSレジからデータベースをアップロードするフォームがあり、それを保存する。\n商品をスキャンすれば、コピーしたデータベースでその品名や値段が自動的に入力される。音が出るので成功したか画面を見ず確認でき、作業が速い。印刷したいものすべて登録し終わったら、印刷できるページが瞬間的に作られる。\nデータベースを更新するさい、品名や値段が変わっていないか自動的にチェックされる。前に印刷したもので、品名や値段が変わっていれば、「これ作り直したほうがいいよ」と自動的に印刷待ちの列に入る。"
+        "content": "POSレジからデータベースをアップロードするフォームがあり、それを保存する。\n\n商品をスキャンすれば、コピーしたデータベースでその品名や値段が自動的に入力される。音が出るので成功したか画面を見ず確認でき、作業が速い。印刷したいものすべて登録し終わったら、印刷できるページが瞬間的に作られる。\n\nデータベースを更新するさい、品名や値段が変わっていないか自動的にチェックされる。前に印刷したもので、品名や値段が変わっていれば、「これ作り直したほうがいいよ」と自動的に印刷待ちの列に入る。"
       }
     ],
     "bulletPoints": [
