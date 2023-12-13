@@ -12,7 +12,8 @@ public partial class PrintTags
   protected override async Task OnInitializedAsync()
   {
     using PriceTagContext priceTagContext = PriceTagContextFactory.CreateDbContext();
-    List<PriceTag> priceTags = await priceTagContext.PriceTags.Where(p => p.NeedsPrinting).ToListAsync();
+    List<PriceTag> priceTags = await priceTagContext.PriceTags.Where(p => p.NeedsPrinting).OrderBy(p => p.CreatedAt).ToListAsync();
+    // Todo: Make sure this sorted properly
 
     List<List<PriceTag>> priceTagPagesToPrint = BreakPriceTagsIntoBlocksOfN(priceTags, 25);
     PriceTagPagesToPrint = priceTagPagesToPrint;

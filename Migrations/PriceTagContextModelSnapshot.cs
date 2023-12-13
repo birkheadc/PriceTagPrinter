@@ -40,7 +40,7 @@ namespace PriceTagPrinter.Migrations
 
                     b.HasKey("GoodsCode");
 
-                    b.ToTable("PriceTags");
+                    b.ToTable("PriceTags", (string)null);
                 });
 #pragma warning restore 612, 618
         }

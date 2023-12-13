@@ -60,6 +60,7 @@ public class UploadService : IUploadService
       // Make them up to date, schedule the price tag for re-printing, then save the context
       ModifyPriceTagToMatchGoods(priceTag, goods);
       priceTag.NeedsPrinting = true;
+      priceTag.CreatedAt = DateTime.Now;
       priceTagContext.Update(priceTag);
     }
     await priceTagContext.SaveChangesAsync();
